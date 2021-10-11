@@ -45,9 +45,15 @@
 		]
 	];
 	rr:predicateObjectMap [
-		rr:predicate iasis:variationDescription;
-		rr:objectMap [
-			rml:reference "Mutation Description"
+		rr:predicate iasis:snp;
+		rr:objectMap [ 
+			rml:reference "SNP"
+		]
+	];
+	rr:predicateObjectMap [
+		rr:predicate iasis:fathmm_prediction;
+		rr:objectMap [ 
+			rml:reference "FATHMM prediction"
 		]
 	];
 	rr:predicateObjectMap [
@@ -55,22 +61,21 @@
 		rr:objectMap [ 
 			rr:parentTriplesMap <#Publication> ;
 			rr:joinCondition [
-				rr:parent "";
-				rr:child "";
-			]
-		]
+				rr:child "cFormat";
+				rr:parent "cFormat";
+			];
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicate iasis:variation_isLocatedIn_gene;
 		rr:objectMap [ 
 			rr:parentTriplesMap <#Gene> ;
 			rr:joinCondition [
-				rr:parent "";
-				rr:child "";
-			]
-		]
+				rr:child "cFormat";
+				rr:paret "cFormat";
+			];
+		];
 	].
-
 
 <#Publication>
 	rml:logicalSource [ rml:source "S4.csv";
