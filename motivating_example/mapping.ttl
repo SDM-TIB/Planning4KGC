@@ -123,7 +123,7 @@
 		rr:objectMap [ 
 			rr:template "http://project-iasis.eu/Tissue/{Primary site}";
 		]
-	];
+	].
 
 <#Tumor>
 	rml:logicalSource [ rml:source "S5.csv";
