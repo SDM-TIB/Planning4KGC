@@ -1,1 +1,1 @@
-# SDM-RDFizer_Version4.0_Experiments
+# Planning4KGC
