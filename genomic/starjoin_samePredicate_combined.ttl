@@ -19,9 +19,13 @@
                 rr:class iasis:Mutation;
         ];
         rr:predicateObjectMap [
-                rr:predicate rdf:type;
+                rr:predicate iasis:transcript_isRelatedTo_gene;
                 rr:objectMap [
-                        rr:constant "http://project-iasis.eu/vocab/Mutation";
+                        rr:parentTriplesMap <TriplesMap2>;
+                        rr:joinCondition [
+                                rr:child "HGNC ID";
+                                rr:parent "HGNC ID";
+                        ];
                 ];
         ].
 
@@ -43,7 +47,6 @@
                         ];
                 ];
         ].
-
 
 <TriplesMap3>
         rml:logicalSource [ rml:source "/home/mevidal/RML-Planner/experiments/starJoin/source3.csv";
@@ -83,7 +86,6 @@
                 ];
         ].
 
-
 <TriplesMap5>
         rml:logicalSource [ rml:source "/home/mevidal/RML-Planner/experiments/starJoin/source5.csv";
                                                 rml:referenceFormulation ql:CSV
@@ -121,5 +123,36 @@
                         ];
                 ];
         ].
-           					
-	
+
+<TriplesMap7>
+        rml:logicalSource [ rml:source "/home/mevidal/RML-Planner/experiments/samePredicate/source1_sample.csv";
+                                                rml:referenceFormulation ql:CSV
+                                                ];
+        rr:subjectMap [
+                rr:template "http://project-iasis.eu/Transcript/{Transcript}";
+        ];
+        rr:predicateObjectMap [
+                rr:predicate iasis:transcript_isRelatedTo_gene;
+                rr:objectMap [
+                        rr:parentTriplesMap <TriplesMap8>;
+                        rr:joinCondition [
+                                rr:child "ID";
+                                rr:parent "ID";
+                        ];
+                ];
+        ].
+
+<TriplesMap8>
+        rml:logicalSource [ rml:source "/home/mevidal/RML-Planner/experiments/samePredicate/source2_sample.csv";
+                                                rml:referenceFormulation ql:CSV
+                                                ];
+        rr:subjectMap [
+                rr:template "http://project-iasis.eu/Gene/{HGNC name}";
+                rr:class iasis:Gene
+        ];
+        rr:predicateObjectMap [
+                rr:predicate rdf:type;
+                rr:objectMap [
+                        rr:constant "http://project-iasis.eu/vocab/Gene";
+                ];
+        ].
